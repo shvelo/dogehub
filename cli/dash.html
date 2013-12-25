@@ -43,8 +43,8 @@
 		socket.on('pointer_res', function (data) {
 			dawgs = data;
 			$.each(dawgs, function(index, dawg) {
-				console.log(index);
-				console.log(dawg);
+				if (index == pid)
+					return 1;
 				var d = $(".dawg-" + index);
 				if (!!d.length) {
 					$(d[0]).css({
