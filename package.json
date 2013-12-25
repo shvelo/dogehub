@@ -1,0 +1,26 @@
+{
+  "name": "pointerhub",
+  "version": "0.0.1",
+  "description": "Bunch of realtime user pointers",
+  "main": "point.js",
+  "scripts": {
+    "test": "node point.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Stichoza/pointerhub.git"
+  },
+  "keywords": [
+    "pointer",
+    "nodejs",
+    "sockets",
+    "socketio",
+    "reltime"
+  ],
+  "author": "Stichoza",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Stichoza/pointerhub/issues"
+  },
+  "homepage": "https://github.com/Stichoza/pointerhub"
+}
