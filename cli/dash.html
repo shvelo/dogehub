@@ -1,12 +1,73 @@
-<script src="/socket.io/socket.io.js"></script>
-<script src="//code.jquery.com/jquery-latest.min.js"></script>
-<script>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PointHub</title>
+	<style type="text/css">
+		body {
+			position: fixed;
+			height: 100%;
+			width: 100%;
+		}
+		.dawg {
+			position: fixed;
+			width: 12px;
+			height: 19px;
+			background-image: url(http://g-ecx.images-amazon.com/images/G/01/mas/retail/images/cursor._V172774602_.png);
+		}
+	</style>
+</head>
+<body>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="//code.jquery.com/jquery-latest.min.js"></script>
+	<script>
 
-  var socket = io.connect('http://localhost');
+		if(typeof(Storage) == "undefined") {
+			console.warn("localStorage not supported");
+			var pid = Math.floor(Math.random() * 1000);
+		} else {
+			var pid = localStorage.pid || Math.floor(Math.random() * 1000);
+			localStorage.pid = pid;
+		}
+		console.log("pid: " . pid);
+		
 
-  socket.on('roger', function (data) {
-  	console.log(data);
-  	socket.emit('ohai', {id: '5423' });
-  });
+		// create socket
+		var socket = io.connect('http://localhost'),
+			dawgs = {};
 
-</script>
+		socket.on('roger', function (data) {
+			console.log(data);
+			socket.emit('ohai', {id: pid});
+		});
+
+		socket.on('pointer_res', function (data) {
+			dawgs = data;
+			$.each(dawgs, function(index, dawg) {
+				console.log(index);
+				console.log(dawg);
+				var d = $(".dawg-" + index);
+				if (!!d.length) {
+					$(d[0]).css({
+						top: dawg.y + "px",
+						left: dawg.x + "px"
+					});
+				} else {
+					$("body").append("<div class='dawg dawg-" +
+						index+
+						"'></div>");
+				}
+			});
+		});
+
+
+		$("body").on("mousemove", function(e) {
+			socket.emit('pointer_req', {
+				id: pid,
+				mx: e.pageX,
+				my: e.pageY
+			});
+		});
+
+	</script>
+</body>
+</html>
