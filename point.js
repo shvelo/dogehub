@@ -23,16 +23,32 @@ io.sockets.on('connection', function (socket) {
 	});
 
 	socket.on('pointer_req', function (data) {
+		var date = new Date();
 		dawgs[data.id] = {
 			x: data.mx,
-			y: data.my
+			y: data.my,
+			t: date.getTime()
 		};
 	});
 
 	var emiter = setInterval(emitDawgs, 50);
+	var police = setInterval(killDawgs, 2000);
 
 	function emitDawgs() {
 		socket.emit('pointer_res', dawgs);
+	}
+	function killDawgs() {
+		var date = new Date();
+		for (var key in dawgs) {
+			var obj = dawgs[key];
+			for (var prop in obj) {
+				if(obj.hasOwnProperty(prop)) {
+					if (prop == "t" && obj[prop] < date.getTime() - 20) {
+						dawgs[key] = null;
+					}
+				}
+			}
+		}
 	}
 
 });

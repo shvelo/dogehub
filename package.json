@@ -2,7 +2,7 @@
   "name": "pointerhub",
   "version": "0.0.1",
   "description": "Bunch of realtime user pointers",
-  "main": "point.js",
+  "main": "node point.js",
   "scripts": {
     "test": "node point.js"
   },
