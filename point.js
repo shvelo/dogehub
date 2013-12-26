@@ -49,9 +49,9 @@ wss.on('connection', function (socket) {
 			var obj = dawgs[key];
 			for (var prop in obj) {
 				if(obj.hasOwnProperty(prop)) {
-					if (prop == "t" && obj[prop] < date.getTime() - 200) {
+					if (prop == "t" && obj[prop] < date.getTime() - 50000) {
 						dawgs[key] = null;
-					} else if (prop == "t" && obj[prop] < date.getTime() - 100) {
+					} else if (prop == "t" && obj[prop] < date.getTime() - 5000) {
 						dawgs[key][a] = false;
 					}
 				}
