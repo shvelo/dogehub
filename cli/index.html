@@ -54,7 +54,7 @@
 
 		ws.onmessage = function (data) {
 			dawgs = JSON.parse(data.data);
-			//console.log(dawgs);
+			console.log(dawgs);
 			$.each(dawgs, function(index, dawg) {
 				if (index == pid || dawg == null)
 					return 1;
