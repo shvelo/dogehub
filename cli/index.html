@@ -66,7 +66,7 @@
 				var d = $(".dawg-" + index);
 
 				if (!!d.length) {
-					var op = dawg.a ? "1" : "0.8";
+					var op = (!!dawg.a) ? "1" : "0.5";
 					$(d[0]).css({
 						top: dawg.y + "px",
 						left: dawg.x + "px",
