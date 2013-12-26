@@ -30,7 +30,7 @@ wss.on('connection', function (socket) {
 	var emiter = setInterval(emitDawgs, 50);
 	var police = setInterval(killDawgs, 2000);
 
-	ws.on('close', function() {
+	socket.on('close', function() {
 		console.log('websocket connection closed');
 		clearInterval(emiter);
 		clearInterval(police);
