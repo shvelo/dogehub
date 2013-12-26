@@ -39,7 +39,7 @@
 			dawgs = JSON.parse(data.data);
 			console.log(dawgs);
 			$.each(dawgs, function(index, dawg) {
-				if (index == pid)
+				if (index == pid || dawg == null)
 					return 1;
 				var d = $(".dawg-" + index);
 				if (!!d.length) {
