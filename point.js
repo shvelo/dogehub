@@ -1,5 +1,5 @@
-var app = require('express').createServer(),
-	server = require('http').createServer(app),
+var express = require("express"),
+	app = express(),
 	io = require('socket.io').listen(server),
 	dawgs = {};
 
