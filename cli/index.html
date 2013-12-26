@@ -84,12 +84,16 @@
 
 
 		$("body").on("mousemove", function(e) {
-			ws.send(JSON.stringify({
-				id: pid,
-				lb: name,
-				mx: e.pageX,
-				my: e.pageY
-			}));
+			try {
+				ws.send(JSON.stringify({
+					id: pid,
+					lb: name,
+					mx: e.pageX,
+					my: e.pageY
+				}));
+			} catch (err) {
+				console.warn("daym dawg, keep calm");
+			}
 		});
 
 	</script>
