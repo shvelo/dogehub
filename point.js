@@ -1,28 +1,24 @@
-var express = require("express"),
-	app = express(),
-	io = require('socket.io').listen(server),
-	dawgs = {};
+var WebSocketServer = require('ws').Server
+  , http = require('http')
+  , express = require('express')
+  , app = express()
+  , port = process.env.PORT || 5000
+  , dawgs = {};
 
-server.listen(80);
+app.use(express.static(__dirname + '/cli/'));
 
-app.get('/', function (req, res) {
-	res.sendfile(__dirname + '/cli/dash.html');
-});
+var server = http.createServer(app);
+server.listen(port);
 
-io.sockets.on('connection', function (socket) {
+console.log('http server listening on %d', port);
 
-	socket.emit('roger', {
-		msg: 'roger'
-	});
+var wss = new WebSocketServer({server: server});
 
-	socket.on('ohai', function (data) {
-		console.log(
-			"Random dawg with id " +
-			data.id +
-			" has joined :>");
-	});
+wss.on('connection', function (socket) {
 
-	socket.on('pointer_req', function (data) {
+	socket.on('message', function (data) {
+		var data = JSON.parse(data);
+		console.log(data);
 		var date = new Date();
 		dawgs[data.id] = {
 			x: data.mx,
@@ -35,8 +31,9 @@ io.sockets.on('connection', function (socket) {
 	var police = setInterval(killDawgs, 2000);
 
 	function emitDawgs() {
-		socket.emit('pointer_res', dawgs);
+		socket.send(JSON.stringify(dawgs));
 	}
+
 	function killDawgs() {
 		var date = new Date();
 		for (var key in dawgs) {

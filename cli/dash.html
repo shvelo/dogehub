@@ -17,7 +17,6 @@
 	</style>
 </head>
 <body>
-	<script src="/socket.io/socket.io.js"></script>
 	<script src="//code.jquery.com/jquery-latest.min.js"></script>
 	<script>
 
@@ -31,17 +30,14 @@
 		console.log("pid: " . pid);
 		
 
-		// create socket
-		var socket = io.connect('http://localhost'),
+
+		var host = location.origin.replace(/^http/, 'ws'),
+			ws = new WebSocket(host),
 			dawgs = {};
 
-		socket.on('roger', function (data) {
-			console.log(data);
-			socket.emit('ohai', {id: pid});
-		});
-
-		socket.on('pointer_res', function (data) {
-			dawgs = data;
+		ws.onmassage = function (data) {
+			dawgs = JSON.parse(data);
+			console.log(dawgs);
 			$.each(dawgs, function(index, dawg) {
 				if (index == pid)
 					return 1;
@@ -57,15 +53,15 @@
 						"'></div>");
 				}
 			});
-		});
+		}
 
 
 		$("body").on("mousemove", function(e) {
-			socket.emit('pointer_req', {
+			ws.send(JSON.stringify({
 				id: pid,
 				mx: e.pageX,
 				my: e.pageY
-			});
+			}));
 		});
 
 	</script>
