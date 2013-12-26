@@ -36,6 +36,7 @@ wss.on('connection', function (socket) {
 
 	function killDawgs() {
 		var date = new Date();
+		console.log(dawgs);
 		for (var key in dawgs) {
 			var obj = dawgs[key];
 			for (var prop in obj) {

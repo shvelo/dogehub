@@ -35,8 +35,8 @@
 			ws = new WebSocket(host),
 			dawgs = {};
 
-		ws.onmassage = function (data) {
-			dawgs = JSON.parse(data);
+		ws.onmessage = function (data) {
+			dawgs = JSON.parse(data.data);
 			console.log(dawgs);
 			$.each(dawgs, function(index, dawg) {
 				if (index == pid)
