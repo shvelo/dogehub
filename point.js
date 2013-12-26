@@ -23,7 +23,7 @@ wss.on('connection', function (socket) {
 		dawgs[data.id] = {
 			x: data.mx,
 			y: data.my,
-			n: data.name,
+			n: data.lb,
 			t: date.getTime()
 		};
 	});

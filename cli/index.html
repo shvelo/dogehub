@@ -68,7 +68,7 @@
 					$("body").append("<div class='dawg dawg-" +
 						index +
 						"'><span>" +
-						dawg.name +
+						dawg.lb +
 						"</span></div>");
 				}
 			});
@@ -78,7 +78,7 @@
 		$("body").on("mousemove", function(e) {
 			ws.send(JSON.stringify({
 				id: pid,
-				name: name,
+				lb: name,
 				mx: e.pageX,
 				my: e.pageY
 			}));
