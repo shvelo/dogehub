@@ -13,6 +13,21 @@
 			width: 12px;
 			height: 19px;
 			background-image: url(http://g-ecx.images-amazon.com/images/G/01/mas/retail/images/cursor._V172774602_.png);
+			-webkit-transition: .2s all linear;
+			-moz-transition: .2s all linear;
+			-o-transition: .2s all linear;
+			transition: .2s all linear;
+		}
+		.dawg span {
+			display: block;
+			position: absolute;
+			top: 16px;
+			left: 15px;
+			background: rgba(0,0,0,0.1);
+			font-family: monospace;
+			color: #888;
+			font-size: 9px;
+			padding: 2px 5px;
 		}
 	</style>
 </head>
@@ -22,9 +37,11 @@
 
 		if(typeof(Storage) == "undefined") {
 			console.warn("localStorage not supported");
+			var name = window.prompt("Enter your name");
 			var pid = Math.floor(Math.random() * 1000);
 		} else {
 			var pid = localStorage.pid || Math.floor(Math.random() * 1000);
+			var name = window.prompt("Enter your name") || "user"+pid;
 			localStorage.pid = pid;
 		}
 		console.log("pid: " . pid);
@@ -37,7 +54,7 @@
 
 		ws.onmessage = function (data) {
 			dawgs = JSON.parse(data.data);
-			console.log(dawgs);
+			//console.log(dawgs);
 			$.each(dawgs, function(index, dawg) {
 				if (index == pid || dawg == null)
 					return 1;
@@ -49,8 +66,10 @@
 					});
 				} else {
 					$("body").append("<div class='dawg dawg-" +
-						index+
-						"'></div>");
+						index +
+						"'><span>" +
+						dawg.name +
+						"</span></div>");
 				}
 			});
 		}
@@ -59,6 +78,7 @@
 		$("body").on("mousemove", function(e) {
 			ws.send(JSON.stringify({
 				id: pid,
+				name: name,
 				mx: e.pageX,
 				my: e.pageY
 			}));
