@@ -24,7 +24,8 @@ wss.on('connection', function (socket) {
 			x: data.mx,
 			y: data.my,
 			n: data.lb,
-			t: date.getTime()
+			t: date.getTime(),
+			a: true
 		};
 	});
 
@@ -50,6 +51,8 @@ wss.on('connection', function (socket) {
 				if(obj.hasOwnProperty(prop)) {
 					if (prop == "t" && obj[prop] < date.getTime() - 200) {
 						dawgs[key] = null;
+					} else if (prop == "t" && obj[prop] < date.getTime() - 100) {
+						dawgs[key][a] = false;
 					}
 				}
 			}

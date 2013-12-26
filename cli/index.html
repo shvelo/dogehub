@@ -54,15 +54,22 @@
 
 		ws.onmessage = function (data) {
 			dawgs = JSON.parse(data.data);
-			console.log(dawgs);
+			//console.log(dawgs);
 			$.each(dawgs, function(index, dawg) {
-				if (index == pid || dawg == null)
+				if (index == pid) {
 					return 1;
+				} else if (dawg == null) {
+					$(".dawg-" + index).remove();
+				}
+
 				var d = $(".dawg-" + index);
+
 				if (!!d.length) {
+					var op = dawg.a ? "1" : "0.8";
 					$(d[0]).css({
 						top: dawg.y + "px",
-						left: dawg.x + "px"
+						left: dawg.x + "px",
+						opacity: op;
 					});
 				} else {
 					$("body").append("<div class='dawg dawg-" +
