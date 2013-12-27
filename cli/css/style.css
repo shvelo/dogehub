@@ -37,9 +37,13 @@ div#author {
     background: #454545;
     color: #92c92a;
     font-weight: bold;
-    font-family: monospace;
+    font-family: sans-serif;
     font-size: .8em;
     opacity: 0.4;
+	-webkit-transition: .1s all ease-in;
+	-moz-transition: .1s all ease-in;
+	-o-transition: .1s all ease-in;
+	transition: .1s all ease-in;
 }
 div#author:hover {
 	opacity: 0.9;
@@ -54,4 +58,5 @@ div#stats {
 	right: 5px;
 	color: #999;
 	font-size: 0.8em;
+    font-family: sans-serif;
 }
