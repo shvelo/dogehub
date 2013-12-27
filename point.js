@@ -60,8 +60,8 @@ wss.on('connection', function (socket) {
 						act++;
 					}
 				}
+				on++;
 			}
-			on++;
 		}
 		online = [--on, act];
 		dawgs["stats"] = online;
