@@ -18,7 +18,8 @@ console.log("name:\t" . name);
 var host = location.origin.replace(/^http/, 'ws'),
 	ws = new WebSocket(host),
 	dawgs = {},
-	online = [0, 0];
+	online = [0, 0],
+	online_text = "";
 
 ws.onmessage = function (data) {
 	dawgs = JSON.parse(data.data);
@@ -28,6 +29,15 @@ ws.onmessage = function (data) {
 			return 1;
 		} else if (index == "stats") {
 			online = dawg;
+			if (online[0] < 1) {
+				online_text = "Loading data...";
+			} else if (online[0] == 1) {
+				online_text = "Sorry, <b>you are alone</b> here."
+					+ "<br>ask someone to join :)";
+			} else {
+				online_text = "<b>" + online[0]
+					+ "</b> people online";
+			}
 			return 1;
 		} else if (dawg == null) {
 			$(".dawg-" + index).remove();
@@ -68,5 +78,5 @@ $("body").on("mousemove", function(e) {
 });
 
 var onlineSetter = setInterval(function() {
-	$("output").text(online[0]);
+	$("#stats").html(online_text);
 }, 500);

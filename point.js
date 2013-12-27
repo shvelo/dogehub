@@ -50,6 +50,9 @@ wss.on('connection', function (socket) {
 		console.log(dawgs);
 		loopMain: for (var key in dawgs) {
 			var obj = dawgs[key];
+			if (obj == null) {
+				continue loopMain;
+			}
 			loopInner: for (var prop in obj) {
 				if(obj.hasOwnProperty(prop)) {
 					if (prop == "t" && obj[prop] < date.getTime() - 30000) {
