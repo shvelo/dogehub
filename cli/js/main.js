@@ -1,6 +1,6 @@
 if(typeof(Storage) == "undefined") {
 	console.warn("localStorage not supported");
-	var pid = Math.floor(Math.random() * 1000);
+	var pid = Math.floor(Math.random() * 1000000);
 	var name = window.prompt("Enter your name") || "user"+pid;
 } else {
 	var pid = localStorage.pid || Math.floor(Math.random() * 1000);
