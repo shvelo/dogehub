@@ -1,6 +1,6 @@
 {
   "name": "pointerhub",
-  "version": "0.0.1",
+  "version": "0.1.2",
   "description": "Bunch of realtime user pointers",
   "main": "node point.js",
   "scripts": {
@@ -25,7 +25,7 @@
     "node": "0.10.x",
     "npm": "1.2.x"
   },
-  "author": "Stichoza",
+  "author": "Stichoza <me@stichoza.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Stichoza/pointerhub/issues"

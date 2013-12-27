@@ -1,0 +1,57 @@
+body {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+}
+.dawg {
+	position: fixed;
+	width: 12px;
+	height: 19px;
+	background-image: url(../assets/cursor.png);
+	-webkit-transition: .2s all linear;
+	-moz-transition: .2s all linear;
+	-o-transition: .2s all linear;
+	transition: .2s all linear;
+}
+.dawg span {
+	display: block;
+	max-width: 100px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: smaller;
+	white-space: nowrap;
+	position: absolute;
+	top: 16px;
+	left: 15px;
+	background: rgba(0,0,0,0.1);
+	font-family: monospace;
+	color: #888;
+	font-size: .8em;
+	padding: 2px 5px;
+}
+div#author {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    padding: 4px 14px;
+    background: #454545;
+    color: #92c92a;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: .8em;
+    opacity: 0.4;
+}
+div#author:hover {
+	opacity: 0.9;
+}
+div#author a {
+    color: #92c92a;
+}
+
+div#stats {
+	position: fixed;
+	top: 5px;
+	right: 5px;
+	color: #999;
+	font-size: 0.8em;
+}
