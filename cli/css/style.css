@@ -8,10 +8,10 @@ body {
 	width: 12px;
 	height: 19px;
 	background-image: url(../assets/cursor.png);
-	-webkit-transition: .2s all linear;
-	-moz-transition: .2s all linear;
-	-o-transition: .2s all linear;
-	transition: .2s all linear;
+	-webkit-transition: .07s all linear;
+	-moz-transition: .07s all linear;
+	-o-transition: .07s all linear;
+	transition: .07s all linear;
 }
 .dawg span {
 	display: block;
