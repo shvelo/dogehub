@@ -48,20 +48,20 @@ wss.on('connection', function (socket) {
 			on = 0,
 			act = 0;
 		console.log(dawgs);
-		for (var key in dawgs) {
+		loopMain: for (var key in dawgs) {
 			var obj = dawgs[key];
-			for (var prop in obj) {
+			loopInner: for (var prop in obj) {
 				if(obj.hasOwnProperty(prop)) {
 					if (prop == "t" && obj[prop] < date.getTime() - 30000) {
 						dawgs[key] = null;
-						continue;
+						continue loopMain;
 					} else if (prop == "t" && obj[prop] < date.getTime() - 5000) {
 						dawgs[key].a = false;
 						act++;
 					}
 				}
-				on++;
 			}
+			on++;
 		}
 		online = [--on, act];
 		dawgs["stats"] = online;
