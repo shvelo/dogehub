@@ -60,7 +60,7 @@ ws.onmessage = function (data) {
 			});
 
 			if(dawg.wow) {
-				var wow = dawg.find(".wow");
+				var wow = d[0].find(".wow");
 				wow.show();
 				setTimeout(function(){
 					wow.hide();
