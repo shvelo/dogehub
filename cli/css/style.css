@@ -25,8 +25,8 @@ body {
 	white-space: nowrap;
 	position: absolute;
 	top: 64px;
-	left: 0px;
-	width: 60px;
+	left: -40px;
+	width: 100px;
 	text-align: center;
 	color: white;
 	font-size: 1.2em;

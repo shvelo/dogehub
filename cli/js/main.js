@@ -9,7 +9,7 @@ if("localStorage" in window) {
 
 if(!pid || !name) {
 	pid = Math.floor(Math.random() * 1000000);
-	name = window.prompt("Enter your name") || "user"+pid;
+	name = window.prompt("Enter your name") || "doge"+pid;
 
 	if("localStorage" in window) {
 		localStorage.pid = pid;
