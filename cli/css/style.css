@@ -43,6 +43,7 @@ body {
 
 div#author {
 	cursor: default;
+	z-index: 999;
     position: fixed;
     bottom: 0px;
     right: 0px;
