@@ -30,21 +30,18 @@ var host = location.origin.replace(/^http/, 'ws'),
 
 ws.onmessage = function (data) {
 	doges = JSON.parse(data.data);
-	//console.log(doges);
+
+	online = doges.length;
+	if (online[0] < 1) {
+		online_text = "wow loading";
+	} else if (online[0] == 1) {
+		online_text = "wow such alone.<br>much sad :(";
+	} else {
+		online_text = "wow <b>" + online[0] + "</b> doges online";
+	}
+
 	$.each(doges, function(index, doge) {
 		if (index == pid) {
-			return 1;
-		} else if (index == "stats") {
-			online = doge;
-			if (online[0] < 1) {
-				online_text = "wow loading";
-			} else if (online[0] == 1) {
-				online_text = "wow such alone."
-					+ "<br>much sad :(";
-			} else {
-				online_text = "wow <b>" + online[0]
-					+ "</b> doges online";
-			}
 			return 1;
 		} else if (doge == null) {
 			$(".doge-" + index).remove();
