@@ -113,6 +113,12 @@ $("body").on("click", function(e) {
 		console.warn("wow much error");
 	}
 });
+$(function(e) {
+	$(".dawg-me").css({
+		left: e.pageX,
+		top: e.pageY
+	})
+});
 
 var onlineSetter = setInterval(function() {
 	$("#stats").html(online_text);
