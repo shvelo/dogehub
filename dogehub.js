@@ -18,11 +18,10 @@ console.log('wow http on %d', port);
 var wss = new WebSocketServer({server: server});
 
 wss.on('connection', function (socket) {
+	console.log("wow doge is connect");
 
 	socket.on('message', function (data) {
 		var data = JSON.parse(data);
-
-		if(data.wow) console.log("WOW");
 
 		var date = new Date();
 		doges[data.id] = {
