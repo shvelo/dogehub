@@ -59,11 +59,11 @@ div#author {
     right: 0px;
     padding: 4px 14px;
     background: #454545;
-    color: #92c92a;
+    color: #FF44F0;
     font-weight: bold;
     font-family: sans-serif;
     font-size: .8em;
-    opacity: 0.4;
+    opacity: 0.5;
 	-webkit-transition: .1s all ease-in;
 	-moz-transition: .1s all ease-in;
 	-o-transition: .1s all ease-in;
@@ -73,7 +73,7 @@ div#author:hover {
 	opacity: 0.9;
 }
 div#author a {
-    color: #92c92a;
+    color: #FF1D6E;
 }
 
 div#stats {
