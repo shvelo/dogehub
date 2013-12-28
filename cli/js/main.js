@@ -4,12 +4,12 @@ if("localStorage" in window) {
 	var pid = localStorage.pid;
 	var name = localStorage.name;
 } else {
-	console.warn("wow much browser");
+	console.warn("wow much browser no localstorage");
 }
 
 if(!pid || !name) {
 	pid = Math.floor(Math.random() * 1000000);
-	name = window.prompt("Enter your name") || "doge"+pid;
+	name = window.prompt("wow enter your name") || "doge"+pid;
 
 	if("localStorage" in window) {
 		localStorage.pid = pid;
