@@ -33,6 +33,7 @@ ws.onmessage = function (raw_data) {
 	doges.forEach(function(doge) {
 		if(doge.id == pid) return;
 		var doge_el = $(".doge-" + doge.id);
+		if(doge.dead) doge_el.remove();
 
 		if (!!doge_el.length) {
 			doge_el.css({
