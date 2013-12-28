@@ -5,8 +5,8 @@ body {
 }
 .dawg {
 	position: fixed;
-	width: 20px;
-	height: 20px;
+	width: 30px;
+	height: 30px;
 	background-image: url(../assets/doge.png);
 	-webkit-transition: .07s all linear;
 	-moz-transition: .07s all linear;
@@ -21,9 +21,9 @@ body {
 	font-size: smaller;
 	white-space: nowrap;
 	position: absolute;
-	top: 16px;
-	left: 15px;
-	background: rgba(0,0,0,0.1);
+	top: 30px;
+	left: 30px;
+	background: rgba(0,0,0,0.2);
 	font-family: monospace;
 	color: #888;
 	font-size: .8em;
