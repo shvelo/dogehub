@@ -60,8 +60,8 @@ div#author {
     bottom: 0px;
     right: 0px;
     padding: 4px 14px;
-    background: #454545;
-    color: #FF44F0;
+    background: #2d2d2d;
+    color: white;
     font-weight: bold;
     font-family: sans-serif;
     font-size: .8em;
@@ -75,14 +75,14 @@ div#author:hover {
 	opacity: 0.9;
 }
 div#author a {
-    color: #FF1D6E;
+    color: white;
 }
 
 div#stats {
 	position: fixed;
 	top: 5px;
 	right: 5px;
-	color: #999;
+	color: white;
 	font-size: 1em;
     text-align: right;
 }
