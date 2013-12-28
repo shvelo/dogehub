@@ -24,7 +24,7 @@ wss.on('connection', function (socket) {
 		id: Math.floor(Math.random() * 1000000),
 		x: 0,
 		y: 0,
-		n: "",
+		name: "",
 		wow: false,
 		dead: false
 	};
@@ -37,7 +37,7 @@ wss.on('connection', function (socket) {
 		var date = new Date();
 		doge.x = parseInt(data.mx);
 		doge.y = parseInt(data.my);
-		doge.n = escapeHtml(data.n);
+		doge.name = escapeHtml(data.name);
 		doge.wow = data.wow;
 	});
 

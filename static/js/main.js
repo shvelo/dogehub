@@ -36,25 +36,26 @@ ws.onmessage = function (raw_data) {
 
 	doges.forEach(function(doge) {
 		if(doge.id == pid) return;
-		var d = $(".doge-" + doge.id);
+		var doge_el = $(".doge-" + doge.id);
 
-		if (!!d.length) {
-			d.css({
-				top: doge.y + "px",
-				left: doge.x + "px"
+		if (!!doge_el.length) {
+			doge_el.css({
+				top: doge.y,
+				left: doge.x
 			});
+			doge_el.find(".name").text(doge.name);
 
 			if(doge.wow) {
-				d.addClass("wow");
+				doge_el.addClass("wow");
 				setTimeout(function(){
-					d.removeClass("wow");
+					doge_el.removeClass("wow");
 				}, 600);
 			}
 		} else {
 			$("#pointer-area").append("<div class='doge doge-" +
 				doge.id +
-				"'><span>" +
-				doge.n +
+				"'><span class=name>" +
+				doge.name +
 				"</span><span class=wow>WOW</span></div>");
 		}
 	});
@@ -64,7 +65,7 @@ ws.onmessage = function (raw_data) {
 $("body").on("mousemove", function(e) {
 	try {
 		ws.send(JSON.stringify({
-			n: name,
+			name: name,
 			mx: e.pageX,
 			my: e.pageY,
 			wow: false
@@ -80,7 +81,7 @@ $("body").on("mousemove", function(e) {
 $("body").on("click", function(e) {
 	try {
 		ws.send(JSON.stringify({
-			n: name,
+			name: name,
 			mx: e.pageX,
 			my: e.pageY,
 			wow: true
