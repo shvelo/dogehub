@@ -26,18 +26,16 @@ var host = location.origin.replace(/^http/, 'ws'),
 	ws = new WebSocket(host),
 	doges = {},
 	online = [0, 0],
-	online_text = "";
+	online_text = "wow loading";
 
 ws.onmessage = function (data) {
 	doges = JSON.parse(data.data);
 
 	online = doges.length;
-	if (online[0] < 1) {
-		online_text = "wow loading";
-	} else if (online[0] == 1) {
+	if (online == 0) {
 		online_text = "wow such alone.<br>much sad :(";
 	} else {
-		online_text = "wow <b>" + online[0] + "</b> doges online";
+		online_text = "wow <b>" + online + "</b> doges online";
 	}
 
 	$.each(doges, function(index, doge) {
