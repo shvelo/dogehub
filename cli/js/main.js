@@ -1,19 +1,24 @@
+var pid, name;
+
 if("localStorage" in window) {
-	var pid = localStorage.pid || Math.floor(Math.random() * 1000);
-	var name = window.prompt("Enter your name", localStorage.name || "") || "user"+pid;
-	localStorage.pid = pid;
-	localStorage.name = name;
+	var pid = localStorage.pid;
+	var name = localStorage.name;
 } else {
 	console.warn("localStorage not supported");
-	var pid = Math.floor(Math.random() * 1000000);
-	var name = window.prompt("Enter your name") || "user"+pid;
 }
 
+if(!pid || !name) {
+	pid = Math.floor(Math.random() * 1000000);
+	name = window.prompt("Enter your name") || "user"+pid;
 
-console.log("pid:\t" . pid);
-console.log("name:\t" . name);
+	if("localStorage" in window) {
+		localStorage.pid = pid;
+		localStorage.name = name;
+	}
+}
 
-
+console.log("pid:" . pid);
+console.log("name:" . name);
 
 var host = location.origin.replace(/^http/, 'ws'),
 	ws = new WebSocket(host),
