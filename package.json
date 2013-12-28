@@ -1,20 +1,20 @@
 {
-  "name": "pointerhub",
-  "version": "0.1.2",
-  "description": "Bunch of realtime user pointers",
-  "main": "node point.js",
+  "name": "dogehub",
+  "version": "0.1.1",
+  "description": "wow much doges",
+  "main": "node dogehub.js",
   "scripts": {
-    "test": "node point.js"
+    "test": "node dogegub.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Stichoza/pointerhub.git"
+    "url": "https://github.com/shvelo/dogehub.git"
   },
   "keywords": [
-    "pointer",
+    "doge",
     "nodejs",
     "sockets",
-    "socketio",
+    "websockets",
     "reltime"
   ],
   "dependencies": {
@@ -25,10 +25,10 @@
     "node": "0.10.x",
     "npm": "1.2.x"
   },
-  "author": "Stichoza <me@stichoza.com>",
+  "author": "Nick Shvelidze <captain@pirrate.me>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Stichoza/pointerhub/issues"
+    "url": "https://github.com/shvelo/dogehub"
   },
-  "homepage": "https://github.com/Stichoza/pointerhub"
+  "homepage": "http://dogehub.herokuapp.com"
 }
