@@ -9,11 +9,9 @@ body {
 	position: fixed;
 	width: 28px;
 	height: 30px;
+	margin-top: -15px;
+	margin-left: -14px;
 	background-image: url(../assets/doge.png);
-	/*-webkit-transition: .07s all linear;
-	-moz-transition: .07s all linear;
-	-o-transition: .07s all linear;
-	transition: .07s all linear;*/
 }
 
 .dawg span {
