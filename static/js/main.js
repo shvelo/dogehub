@@ -30,30 +30,26 @@ ws.onmessage = function (raw_data) {
 		online_text = "wow <b>" + doges.length + "</b> doges online";
 	}
 
+	$(".doge:not(.doge-me)").remove();
+
 	doges.forEach(function(doge) {
 		if(doge.id == pid) return;
+		$("#pointer-area").append("<div class='doge doge-" +
+			doge.id +
+			"'><span class=name>" +
+			doge.name +
+			"</span><span class=wow>WOW</span></div>");
 		var doge_el = $(".doge-" + doge.id);
-		if(doge.dead) doge_el.remove();
+		doge_el.css({
+			top: doge.y,
+			left: doge.x
+		});
 
-		if (!!doge_el.length) {
-			doge_el.css({
-				top: doge.y,
-				left: doge.x
-			});
-			doge_el.find(".name").text(doge.name);
-
-			if(doge.wow) {
-				doge_el.addClass("wow");
-				setTimeout(function(){
-					doge_el.removeClass("wow");
-				}, 600);
-			}
-		} else {
-			$("#pointer-area").append("<div class='doge doge-" +
-				doge.id +
-				"'><span class=name>" +
-				doge.name +
-				"</span><span class=wow>WOW</span></div>");
+		if(doge.wow) {
+			doge_el.addClass("wow");
+			setTimeout(function(){
+				doge_el.removeClass("wow");
+			}, 600);
 		}
 	});
 }
