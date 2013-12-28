@@ -1,1 +1,1 @@
-web: node dogehub.js
+web: ./huptime dogehub.js

@@ -23,7 +23,8 @@
   },
   "engines": {
     "node": "0.10.x",
-    "npm": "1.2.x"
+    "npm": "1.2.x",
+    "python": "2.7.x"
   },
   "author": "Nick Shvelidze <captain@pirrate.me>",
   "license": "MIT",
