@@ -6,6 +6,7 @@ body {
 	cursor: none;
 	user-select: none;
 	-webkit-user-select: none;
+	background: url(../assets/space.jpg);
 }
 
 .dawg {
@@ -27,7 +28,7 @@ body {
 	left: 0px;
 	width: 60px;
 	text-align: center;
-	color: #888;
+	color: white;
 	font-size: 1.2em;
 }
 

@@ -1,1 +1,1 @@
-web: node point.js
+web: node dogehub.js

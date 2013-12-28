@@ -6,6 +6,8 @@ var WebSocketServer = require('ws').Server
   , dawgs = {}
   , online = [0, 0];
 
+try {
+
 app.use(express.static(__dirname + '/cli/'));
 
 var server = http.createServer(app);
@@ -80,4 +82,8 @@ function escapeHtml(text) {
 		.replace(/>/g, "&gt;")
 		.replace(/"/g, "&quot;")
 		.replace(/'/g, "&#039;");
+}
+
+} catch(e) {
+	console.error(e);
 }
