@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var WebSocketServer = require('ws').Server
   , http = require('http')
   , express = require('express')
