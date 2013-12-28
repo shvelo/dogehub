@@ -38,7 +38,7 @@ ws.onmessage = function (data) {
 				online_text = "Loading data...";
 			} else if (online[0] == 1) {
 				online_text = "wow such alone."
-					+ "<br>much sad :)";
+					+ "<br>much sad";
 			} else {
 				online_text = "wow <b>" + online[0]
 					+ "</b> doges online";
