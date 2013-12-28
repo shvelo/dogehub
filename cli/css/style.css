@@ -23,10 +23,10 @@ body {
 	position: absolute;
 	top: 30px;
 	left: 30px;
-	background: rgba(0,0,0,0.2);
+	background: rgba(0,0,0,0.1);
 	font-family: monospace;
-	color: #888;
-	font-size: .8em;
+	color: #2d2d2d;
+	font-size: 1.2em;
 	padding: 2px 5px;
 }
 div#author {
