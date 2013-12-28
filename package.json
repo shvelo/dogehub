@@ -19,12 +19,12 @@
   ],
   "dependencies": {
     "express": "3.1.x",
-    "ws": "0.4.x"
+    "ws": "0.4.x",
+    "forever": "*"
   },
   "engines": {
     "node": "0.10.x",
-    "npm": "1.2.x",
-    "python": "2.7.x"
+    "npm": "1.2.x"
   },
   "author": "Nick Shvelidze <captain@pirrate.me>",
   "license": "MIT",

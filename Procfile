@@ -1,1 +1,1 @@
-web: ./huptime dogehub.js
+web: forever dogehub.js
