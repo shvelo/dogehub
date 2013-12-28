@@ -4,7 +4,7 @@ if("localStorage" in window) {
 	var pid = localStorage.pid;
 	var name = localStorage.name;
 } else {
-	console.warn("localStorage not supported");
+	console.warn("wow much browser");
 }
 
 if(!pid || !name) {
@@ -37,11 +37,11 @@ ws.onmessage = function (data) {
 			if (online[0] < 1) {
 				online_text = "Loading data...";
 			} else if (online[0] == 1) {
-				online_text = "Sorry, <b>you are alone</b> here."
-					+ "<br>ask someone to join :)";
+				online_text = "wow such alone."
+					+ "<br>much sad :)";
 			} else {
-				online_text = "<b>" + online[0]
-					+ "</b> people online";
+				online_text = "wow <b>" + online[0]
+					+ "</b> doges online";
 			}
 			return 1;
 		} else if (dawg == null) {
@@ -60,7 +60,7 @@ ws.onmessage = function (data) {
 			});
 
 			if(dawg.wow) {
-				var wow = d[0].find(".wow");
+				var wow = $(d[0]).find(".wow");
 				wow.show();
 				setTimeout(function(){
 					wow.hide();
