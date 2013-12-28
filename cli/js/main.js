@@ -62,10 +62,9 @@ ws.onmessage = function (data) {
 			});
 
 			if(doge.wow) {
-				var wow = $(d[0]).find(".wow");
-				wow.show();
+				$(d[0]).addClass("wow");
 				setTimeout(function(){
-					wow.hide();
+					$(d[0]).removeClass("wow");
 				}, 600);
 			}
 		} else {
@@ -93,7 +92,7 @@ $("body").on("mousemove", function(e) {
 			top: e.pageY
 		})
 	} catch (err) {
-		console.warn("wow much error");
+		console.warn(err);
 	}
 });
 $("body").on("click", function(e) {
@@ -105,12 +104,12 @@ $("body").on("click", function(e) {
 			my: e.pageY,
 			wow: true
 		}));
-		$(".doge-me .wow").show();
+		$(".doge-me").addClass("wow");
 		setTimeout(function(){
-			$(".doge-me .wow").hide();
+			$(".doge-me").removeClass("wow");
 		}, 600);
 	} catch (err) {
-		console.warn("wow much error");
+		console.warn(err);
 	}
 });
 

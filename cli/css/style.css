@@ -18,6 +18,14 @@ body {
 	background-image: url(../assets/doge.png);
 }
 
+.doge.wow {
+	background-image: url(../assets/doge-flip.png);
+}
+
+.doge.wow .wow {
+	display: block;
+}
+
 .doge span {
 	display: block;
 	overflow: hidden;
@@ -25,7 +33,7 @@ body {
 	white-space: nowrap;
 	position: absolute;
 	top: 64px;
-	left: -40px;
+	left: -20px;
 	width: 100px;
 	text-align: center;
 	color: white;
