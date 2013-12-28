@@ -35,8 +35,8 @@ wss.on('connection', function (socket) {
 		var data = JSON.parse(data);
 
 		var date = new Date();
-		doge.x = parseInt(data.mx);
-		doge.y = parseInt(data.my);
+		doge.x = data.x;
+		doge.y = data.y;
 		doge.name = escapeHtml(data.name);
 		doge.wow = data.wow;
 	});
@@ -63,6 +63,7 @@ function cleanupDoges() {
 }
 
 function escapeHtml(text) {
+	if(!text) return false;
 	return text
 		.replace(/&/g, "&amp;")
 		.replace(/</g, "&lt;")

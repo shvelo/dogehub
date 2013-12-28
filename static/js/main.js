@@ -66,8 +66,8 @@ $("body").on("mousemove", function(e) {
 	try {
 		ws.send(JSON.stringify({
 			name: name,
-			mx: e.pageX,
-			my: e.pageY,
+			x: e.pageX,
+			y: e.pageY,
 			wow: false
 		}));
 		$(".doge-me").css({
@@ -82,8 +82,8 @@ $("body").on("click", function(e) {
 	try {
 		ws.send(JSON.stringify({
 			name: name,
-			mx: e.pageX,
-			my: e.pageY,
+			x: e.pageX,
+			y: e.pageY,
 			wow: true
 		}));
 		$(".doge-me").addClass("wow");
