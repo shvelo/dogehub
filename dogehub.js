@@ -27,7 +27,6 @@ wss.on('connection', function (socket) {
 		dead: false
 	};
 	doges.push(doge);
-	socket.send(JSON.stringify(doge));
 	console.log(doge);
 
 	socket.on('message', function (data) {
@@ -41,7 +40,10 @@ wss.on('connection', function (socket) {
 	});
 
 	var emitter = setInterval(function(){
-		socket.send(JSON.stringify(doges));
+		socket.send(JSON.stringify({
+			you: doge,
+			doges: doges
+		}));
 	}, 50);
 
 	socket.on('close', function() {

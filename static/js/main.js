@@ -21,46 +21,45 @@ var host = location.origin.replace(/^http/, 'ws'),
 	doges = [],
 	online_text = "wow loading";
 
-ws.onmessage = function(data) {
-	pid = JSON.parse(data.data).id;
-	console.log("ID: "+pid);
+ws.onmessage = function (raw_data) {
+	var data = JSON.parse(raw_data.data);
 
-	ws.onmessage = function (data) {
-		doges = JSON.parse(data.data);
+	pid = data.you.id;
 
-		if (doges.length < 2) {
-			online_text = "wow such alone.<br>much sad :(";
-		} else {
-			online_text = "wow <b>" + doges.length + "</b> doges online";
-		}
+	var doges = data.doges;
 
-		doges.forEach(function(doge) {
-			if(doge.id == pid) return;
-
-			var d = $(".doge-" + doge.id);
-
-			if (!!d.length) {
-				d.css({
-					top: doge.y + "px",
-					left: doge.x + "px"
-				});
-
-				if(doge.wow) {
-					d.addClass("wow");
-					setTimeout(function(){
-						d.removeClass("wow");
-					}, 600);
-				}
-			} else {
-				$("#pointer-area").append("<div class='doge doge-" +
-					doge.id +
-					"'><span>" +
-					doge.n +
-					"</span><span class=wow>WOW</span></div>");
-			}
-		});
+	if (doges.length < 2) {
+		online_text = "wow such alone.<br>much sad :(";
+	} else {
+		online_text = "wow <b>" + doges.length + "</b> doges online";
 	}
+
+	doges.forEach(function(doge) {
+		if(doge.id == pid) return;
+		var d = $(".doge-" + doge.id);
+
+		if (!!d.length) {
+			d.css({
+				top: doge.y + "px",
+				left: doge.x + "px"
+			});
+
+			if(doge.wow) {
+				d.addClass("wow");
+				setTimeout(function(){
+					d.removeClass("wow");
+				}, 600);
+			}
+		} else {
+			$("#pointer-area").append("<div class='doge doge-" +
+				doge.id +
+				"'><span>" +
+				doge.n +
+				"</span><span class=wow>WOW</span></div>");
+		}
+	});
 }
+
 
 $("body").on("mousemove", function(e) {
 	try {
