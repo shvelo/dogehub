@@ -29,50 +29,20 @@ wss.on('connection', function (socket) {
 			y: parseInt(data.my),
 			n: escapeHtml(data.lb),
 			t: date.getTime(),
-			a: true,
 			wow: data.wow
 		};
 	});
 
-	var emiter = setInterval(emitDoges, 50);
-	var police = setInterval(killDoges, 1000);
+	var emitter = setInterval(emitDoges, 50);
 
 	socket.on('close', function() {
 		console.log('wow doge is disconnect');
-		clearInterval(emiter);
-		clearInterval(police);
+		clearInterval(emitter);
 	});
 
 	function emitDoges() {
 		socket.send(JSON.stringify(doges));
 	}
-
-	function killDoges() {
-		var date = new Date(),
-			on = 0,
-			act = 0;
-		loopMain: for (var key in doges) {
-			var obj = doges[key];
-			if (obj == null) {
-				continue loopMain;
-			}
-			loopInner: for (var prop in obj) {
-				if(obj.hasOwnProperty(prop)) {
-					if (prop == "t" && obj[prop] < date.getTime() - 30000) {
-						doges[key] = null;
-						continue loopMain;
-					} else if (prop == "t" && obj[prop] < date.getTime() - 5000) {
-						doges[key].a = false;
-						act++;
-					}
-				}
-			}
-			on++;
-		}
-		online = [--on, act];
-		doges["stats"] = online;
-	}
-
 });
 
 function escapeHtml(text) {

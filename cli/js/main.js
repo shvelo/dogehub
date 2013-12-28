@@ -40,7 +40,7 @@ ws.onmessage = function (data) {
 				online_text = "wow loading";
 			} else if (online[0] == 1) {
 				online_text = "wow such alone."
-					+ "<br>much sad";
+					+ "<br>much sad :(";
 			} else {
 				online_text = "wow <b>" + online[0]
 					+ "</b> doges online";
@@ -54,11 +54,9 @@ ws.onmessage = function (data) {
 		var d = $(".doge-" + index);
 
 		if (!!d.length) {
-			var op = (!!doge.a) ? "1" : "0.5";
 			$(d[0]).css({
 				top: doge.y + "px",
-				left: doge.x + "px",
-				opacity: op
+				left: doge.x + "px"
 			});
 
 			if(doge.wow) {
