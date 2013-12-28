@@ -2,6 +2,7 @@ body {
 	position: fixed;
 	height: 100%;
 	width: 100%;
+	cursor: none;
 }
 
 .dawg {
@@ -9,10 +10,10 @@ body {
 	width: 28px;
 	height: 30px;
 	background-image: url(../assets/doge.png);
-	-webkit-transition: .07s all linear;
+	/*-webkit-transition: .07s all linear;
 	-moz-transition: .07s all linear;
 	-o-transition: .07s all linear;
-	transition: .07s all linear;
+	transition: .07s all linear;*/
 }
 
 .dawg span {

@@ -20,6 +20,8 @@ if(!pid || !name) {
 console.log("pid:" . pid);
 console.log("name:" . name);
 
+$(".dawg-me .name").text(name);
+
 var host = location.origin.replace(/^http/, 'ws'),
 	ws = new WebSocket(host),
 	dawgs = {},
@@ -64,7 +66,7 @@ ws.onmessage = function (data) {
 				wow.show();
 				setTimeout(function(){
 					wow.hide();
-				}, 600)
+				}, 600);
 			}
 		} else {
 			$("#pointer-area").append("<div class='dawg dawg-" +
@@ -86,6 +88,10 @@ $("body").on("mousemove", function(e) {
 			my: e.pageY,
 			wow: false
 		}));
+		$(".dawg-me").css({
+			left: e.pageX,
+			top: e.pageY
+		})
 	} catch (err) {
 		console.warn("wow much error");
 	}
@@ -99,6 +105,10 @@ $("body").on("click", function(e) {
 			my: e.pageY,
 			wow: true
 		}));
+		$(".dawg-me .wow").show();
+		setTimeout(function(){
+			$(".dawg-me .wow").hide();
+		}, 600);
 	} catch (err) {
 		console.warn("wow much error");
 	}
