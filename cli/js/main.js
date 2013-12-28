@@ -64,7 +64,7 @@ ws.onmessage = function (data) {
 				wow.show();
 				setTimeout(function(){
 					wow.hide();
-				}, 100)
+				}, 600)
 			}
 		} else {
 			$("#pointer-area").append("<div class='dawg dawg-" +
