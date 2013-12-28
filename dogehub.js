@@ -55,7 +55,7 @@ wss.on('connection', function (socket) {
 	});
 });
 
-setInterval(cleanupDoges, 1000);
+setInterval(cleanupDoges, 50);
 function cleanupDoges() {
 	doges.forEach(function(doge, index) {
 		if(doge.dead) doges.splice(index, 1);
