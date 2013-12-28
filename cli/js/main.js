@@ -31,11 +31,13 @@ var host = location.origin.replace(/^http/, 'ws'),
 ws.onmessage = function (data) {
 	doges = JSON.parse(data.data);
 
-	online = doges.length;
-	if (online == 0) {
+	var doges_count = 0;
+	for(doge in doges) { doges_count++; }
+
+	if (doges_count < 2) {
 		online_text = "wow such alone.<br>much sad :(";
 	} else {
-		online_text = "wow <b>" + online + "</b> doges online";
+		online_text = "wow <b>" + doges_count + "</b> doges online";
 	}
 
 	$.each(doges, function(index, doge) {
