@@ -26,7 +26,8 @@ wss.on('connection', function (socket) {
 			y: parseInt(data.my),
 			n: escapeHtml(data.lb),
 			t: date.getTime(),
-			a: true
+			a: true,
+			wow: data.wow
 		};
 	});
 

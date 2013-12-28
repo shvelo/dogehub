@@ -58,12 +58,20 @@ ws.onmessage = function (data) {
 				left: dawg.x + "px",
 				opacity: op
 			});
+
+			if(dawg.wow) {
+				var wow = dawg.find(".wow");
+				wow.show();
+				setTimeout(function(){
+					wow.hide();
+				}, 100)
+			}
 		} else {
 			$("#pointer-area").append("<div class='dawg dawg-" +
 				index +
 				"'><span>" +
 				dawg.n +
-				"</span></div>");
+				"</span><span class=wow>WOW</span></div>");
 		}
 	});
 }
@@ -75,10 +83,24 @@ $("body").on("mousemove", function(e) {
 			id: pid,
 			lb: name,
 			mx: e.pageX,
-			my: e.pageY
+			my: e.pageY,
+			wow: false
 		}));
 	} catch (err) {
-		console.warn("daym dawg, keep calm");
+		console.warn("wow much error");
+	}
+});
+$("body").on("click", function(e) {
+	try {
+		ws.send(JSON.stringify({
+			id: pid,
+			lb: name,
+			mx: e.pageX,
+			my: e.pageY,
+			wow: true
+		}));
+	} catch (err) {
+		console.warn("wow much error");
 	}
 });
 
