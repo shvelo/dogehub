@@ -1,12 +1,8 @@
 var pid, name;
 
-if("localStorage" in window) {
+if("localStorage" in window && "name" in localStorage) {
 	var name = localStorage.name;
 } else {
-	console.warn("wow much browser no localstorage");
-}
-
-if(!name) {
 	name = window.prompt("wow enter your name") || "RandomDoge";
 
 	if("localStorage" in window) {
