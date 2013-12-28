@@ -1,4 +1,5 @@
 body {
+	font-family: "Comic Sans MS", cursive;
 	position: fixed;
 	height: 100%;
 	width: 100%;
@@ -21,24 +22,25 @@ body {
 	max-width: 100px;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	font-size: smaller;
 	white-space: nowrap;
 	position: absolute;
 	top: 30px;
 	left: 28px;
 	background: rgba(0,0,0,0.1);
-	font-family: monospace;
 	color: #888;
 	font-size: 1.2em;
-	padding: 2px 5px;
+	padding: 3px 5px;
+	padding-bottom: 5px;
 }
 
 .dawg span.wow {
 	display: none;
-	top: -5px;
+	top: -15px;
 	left: 30px;
+	font-size: 1.5em;
 	background: none;
-	color: #FF5A5A;
+	font-weight: bold;
+	color: #FF3DB2;
 }
 
 div#author {
@@ -72,6 +74,5 @@ div#stats {
 	right: 5px;
 	color: #999;
 	font-size: 0.8em;
-    font-family: sans-serif;
     text-align: right;
 }
