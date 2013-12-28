@@ -19,13 +19,14 @@ body {
 
 .dawg span {
 	display: block;
-	max-width: 100px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	position: absolute;
 	top: 64px;
 	left: 0px;
+	width: 60px;
+	text-align: center;
 	color: #888;
 	font-size: 1.2em;
 	padding: 3px 5px;
@@ -34,6 +35,7 @@ body {
 
 .dawg span.wow {
 	display: none;
+	width: auto;
 	top: -15px;
 	left: 60px;
 	font-size: 1.5em;
