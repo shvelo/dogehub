@@ -20,22 +20,22 @@ if(!pid || !name) {
 console.log("pid:" . pid);
 console.log("name:" . name);
 
-$(".dawg-me .name").text(name);
+$(".doge-me .name").text(name);
 
 var host = location.origin.replace(/^http/, 'ws'),
 	ws = new WebSocket(host),
-	dawgs = {},
+	doges = {},
 	online = [0, 0],
 	online_text = "";
 
 ws.onmessage = function (data) {
-	dawgs = JSON.parse(data.data);
-	//console.log(dawgs);
-	$.each(dawgs, function(index, dawg) {
+	doges = JSON.parse(data.data);
+	//console.log(doges);
+	$.each(doges, function(index, doge) {
 		if (index == pid) {
 			return 1;
 		} else if (index == "stats") {
-			online = dawg;
+			online = doge;
 			if (online[0] < 1) {
 				online_text = "wow loading";
 			} else if (online[0] == 1) {
@@ -46,22 +46,22 @@ ws.onmessage = function (data) {
 					+ "</b> doges online";
 			}
 			return 1;
-		} else if (dawg == null) {
-			$(".dawg-" + index).remove();
+		} else if (doge == null) {
+			$(".doge-" + index).remove();
 			return 1;
 		}
 
-		var d = $(".dawg-" + index);
+		var d = $(".doge-" + index);
 
 		if (!!d.length) {
-			var op = (!!dawg.a) ? "1" : "0.5";
+			var op = (!!doge.a) ? "1" : "0.5";
 			$(d[0]).css({
-				top: dawg.y + "px",
-				left: dawg.x + "px",
+				top: doge.y + "px",
+				left: doge.x + "px",
 				opacity: op
 			});
 
-			if(dawg.wow) {
+			if(doge.wow) {
 				var wow = $(d[0]).find(".wow");
 				wow.show();
 				setTimeout(function(){
@@ -69,10 +69,10 @@ ws.onmessage = function (data) {
 				}, 600);
 			}
 		} else {
-			$("#pointer-area").append("<div class='dawg dawg-" +
+			$("#pointer-area").append("<div class='doge doge-" +
 				index +
 				"'><span>" +
-				dawg.n +
+				doge.n +
 				"</span><span class=wow>WOW</span></div>");
 		}
 	});
@@ -88,7 +88,7 @@ $("body").on("mousemove", function(e) {
 			my: e.pageY,
 			wow: false
 		}));
-		$(".dawg-me").css({
+		$(".doge-me").css({
 			left: e.pageX,
 			top: e.pageY
 		})
@@ -105,9 +105,9 @@ $("body").on("click", function(e) {
 			my: e.pageY,
 			wow: true
 		}));
-		$(".dawg-me .wow").show();
+		$(".doge-me .wow").show();
 		setTimeout(function(){
-			$(".dawg-me .wow").hide();
+			$(".doge-me .wow").hide();
 		}, 600);
 	} catch (err) {
 		console.warn("wow much error");

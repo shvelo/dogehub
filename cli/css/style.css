@@ -9,7 +9,7 @@ body {
 	background: url(../assets/space.jpg);
 }
 
-.dawg {
+.doge {
 	position: fixed;
 	width: 60px;
 	height: 64px;
@@ -18,7 +18,7 @@ body {
 	background-image: url(../assets/doge.png);
 }
 
-.dawg span {
+.doge span {
 	display: block;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -32,7 +32,7 @@ body {
 	font-size: 1.2em;
 }
 
-.dawg span.wow {
+.doge span.wow {
 	display: none;
 	width: auto;
 	top: -15px;
