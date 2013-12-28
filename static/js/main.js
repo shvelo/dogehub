@@ -26,7 +26,7 @@ ws.onmessage = function (raw_data) {
 
 	pid = data.you.id;
 
-	var doges = data.doges;
+	doges = data.doges;
 
 	if (doges.length < 2) {
 		online_text = "wow such alone.<br>much sad :(";

@@ -19,7 +19,7 @@ body {
 }
 
 .doge.wow {
-	background-image: url(../assets/doge-flip.png);
+	background-position: -60px 0;
 }
 
 .doge.wow .wow {
