@@ -99,7 +99,7 @@ progress::-moz-progress-bar {
 	opacity: .8;
 }
 
-doge.super progress {
+.doge.super progress {
 	display: none;
 }
 
