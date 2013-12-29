@@ -75,6 +75,7 @@ ws.onmessage = function (raw_data) {
 
 			if(doge.wow) {
 				doge_el.addClass("wow");
+				doge_el.toggleClass("flip");
 				setTimeout(function(){
 					doge_el.removeClass("wow");
 				}, 600);
@@ -130,6 +131,7 @@ $("body").on("click", function(e) {
 			wow: true
 		}));
 		$("#me").addClass("wow");
+		$("#me").toggleClass("flip");
 		setTimeout(function(){
 			$("#me").removeClass("wow");
 		}, 600);

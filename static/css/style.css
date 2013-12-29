@@ -37,7 +37,7 @@ progress::-moz-progress-bar {
 	background-image: url(../assets/doge.png);
 }
 
-.doge.wow {
+.doge.flip {
 	background-position: -60px 0;
 }
 
@@ -45,7 +45,7 @@ progress::-moz-progress-bar {
 	background-position: -120px 0;
 }
 
-.doge.super.wow {
+.doge.super.flip {
 	background-position: -180px 0;
 }
 
