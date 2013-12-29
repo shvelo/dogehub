@@ -1,4 +1,4 @@
-var pid, name, lvl, open = false;
+var pid, name, lvl, message, open = false;
 
 if("localStorage" in window && "name" in localStorage) {
 	var name = localStorage.name;
@@ -32,8 +32,6 @@ var host = location.origin.replace(/^http/, 'ws'),
 ws.onopen = function() {
 	ws.send(JSON.stringify({
 		name: name,
-		x: 0,
-		y: 0,
 		wow: false,
 		id: pid
 	}));
@@ -133,6 +131,20 @@ $("body").on("click", function(e) {
 		}, 600);
 	} catch (err) {
 		console.warn(err);
+	}
+});
+$(window).on("keyup", function(e) {
+	if(e.keyCode == 13) {
+		var input = $("#message input");
+		message = input.val();
+		input.val("");
+		input.focus();
+
+		if(message.length > 0 && open) {
+			ws.send(JSON.stringify({
+				msg: message
+			}));
+		}
 	}
 });
 

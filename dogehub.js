@@ -50,16 +50,14 @@ wss.on('connection', function (socket) {
 			});
 		}
 
-		var date = new Date();
-
 		if("x" in data) {
 			doge.x = data.x;
 			doge.y = data.y;
 		}
 		if("name" in data) doge.name = escapeHtml(data.name);
-		doge.wow = data.wow;
+		doge.wow = data.wow || false;
 
-		if("msg" in data) doge.msg = data.msg
+		if("msg" in data) doge.msg = data.msg;
 
 		if(doge.wow && doge.lvl < 100) {
 			doge.lvl++;

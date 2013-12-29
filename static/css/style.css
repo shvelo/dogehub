@@ -148,3 +148,17 @@ progress::-moz-progress-bar {
 #char .pic {
 	width: 200px;
 }
+
+#message {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	background: #2d2d2d;
+	opacity: .5;
+	padding: 5px;
+}
+
+#message input {
+	font-size: 1.5em;
+	padding: 5px;
+}
