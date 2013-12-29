@@ -59,9 +59,7 @@ wss.on('connection', function (socket) {
 
 		if("msg" in data) {
 			doge.msg = data.msg;
-			doge.newMsg = true;
-		} else {
-			doge.newMsg = false;
+			doge.msgDate = new Date();
 		}
 
 		if(doge.wow && doge.lvl < 100) {
@@ -82,6 +80,14 @@ setInterval(cleanupDoges, 50);
 function cleanupDoges() {
 	doges.forEach(function(doge, index) {
 		if(doge.remove) doges.splice(index, 1);
+	});
+}
+
+setInterval(cleanupMessages, 2000);
+function cleanupMessages() {
+	var d = new Date();
+	doges.forEach(function(doge, index) {
+		if(doge.msgDate < d - 2000) doge.msg = "";
 	});
 }
 

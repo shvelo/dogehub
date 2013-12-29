@@ -47,6 +47,8 @@ ws.onmessage = function (raw_data) {
 	var data = JSON.parse(raw_data.data);
 
 	pid = data.you.id;
+	message = data.you.msg;
+	$("#me .message").text(message);
 	if("localStorage" in window) localStorage.pid = pid;
 
 	lvl = data.you.lvl;
@@ -79,12 +81,11 @@ ws.onmessage = function (raw_data) {
 					doge_el.removeClass("wow");
 				}, 600);
 			}
-			if(doge.newMsg) {
-				doge_el.find(".message").text(doge.msg).show();
-				setTimeout(function(){
-					doge_el.find(".message").hide();
-				}, 1000);
-			}
+			
+			doge_el.find(".message").text(doge.msg);
+			
+			doge_el.find("progress").val(doge.lvl / 100);
+			if(doge.lvl == 100) doge_ell.addClass("super");
 		} else {
 			$("#pointer-area").append("<div class='doge' id='" +
 			doge.id + "'><span class=name>" + doge.name +
@@ -146,10 +147,6 @@ $(window).on("keyup", function(e) {
 		input.focus();
 
 		if(message.length > 0 && open) {
-			$("#me .message").text(message).show();
-			setTimeout(function(){
-				$("#me .message").hide();
-			}, 1000);
 			ws.send(JSON.stringify({
 				msg: message
 			}));

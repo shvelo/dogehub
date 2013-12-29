@@ -79,7 +79,6 @@ progress::-moz-progress-bar {
 }
 
 .doge span.message {
-	display: none;
 	width: 300px;
 	text-align: left;
 	text-overflow: ellipsis;
