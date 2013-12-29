@@ -164,6 +164,7 @@ doge.super progress {
 
 #char .pic {
 	width: 200px;
+	display: none;
 }
 
 #message {
