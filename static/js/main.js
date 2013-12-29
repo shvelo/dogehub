@@ -1,7 +1,8 @@
-var pid, name;
+var pid, name, lvl, open = false;
 
 if("localStorage" in window && "name" in localStorage) {
 	var name = localStorage.name;
+	if("pid" in localStorage) pid = localStorage.pid;
 } else {
 	name = window.prompt("wow enter your name") || "RandomDoge";
 
@@ -10,31 +11,59 @@ if("localStorage" in window && "name" in localStorage) {
 	}
 }
 
-$(".doge-me .name").text(name);
+$("#me .name").text(name);
+$("#char .name").text(name);
+
+$("#char .name").click(function() {
+	name = prompt("wow enter new name") || name;
+	$("#me .name").text(name);
+	$("#char .name").text(name);
+	if("localStorage" in window) {
+		localStorage.name = name;
+	}
+})
 
 var host = location.origin.replace(/^http/, 'ws'),
 	ws = new WebSocket(host),
 	doges = [],
 	online_text = "wow loading";
 
+ws.onopen = function() {
+	ws.send(JSON.stringify({
+		name: name,
+		x: 0,
+		y: 0,
+		wow: false,
+		id: pid
+	}));
+
+	open = true;
+};
+
+ws.onclose = function() {
+	open = false;
+}
+
 ws.onmessage = function (raw_data) {
 	var data = JSON.parse(raw_data.data);
 
 	pid = data.you.id;
+	if("localStorage" in window) localStorage.pid = pid;
+
+	lvl = data.you.lvl;
+	$("#char .lvl").val(lvl / 100);
+	if(lvl == 100) $("#me").addClass("super");
 
 	doges = data.doges;
-
-	if (doges.length < 2) {
-		online_text = "wow such alone.<br>much sad :(";
-	} else {
-		online_text = "wow <b>" + doges.length + "</b> doges online";
-	}
+	var online_doges = 1;
 
 	$(".doge").addClass("dead");
 
 	doges.forEach(function(doge) {
-		if(doge.id == pid) return;
-		var doge_el = $(".doge-" + doge.id);
+		if(doge.id == pid || doge.dead) return;
+		var doge_el = $("#"+doge.id);
+
+		online_doges++;
 
 		if (!!doge_el.length) {
 			doge_el.removeClass("dead");
@@ -51,7 +80,7 @@ ws.onmessage = function (raw_data) {
 				}, 600);
 			}
 		} else {
-			$("#pointer-area").append("<div class='doge doge-" +
+			$("#pointer-area").append("<div class='doge' id='" +
 				doge.id +
 				"'><span class=name>" +
 				doge.name +
@@ -59,12 +88,19 @@ ws.onmessage = function (raw_data) {
 		}
 	});
 
-	$(".doge-me").removeClass("dead");
+	if (online_doges < 2) {
+		online_text = "wow such alone.<br>much sad :(";
+	} else {
+		online_text = "wow <b>" + online_doges + "</b> doges online";
+	}
+
+	$("#me").removeClass("dead");
 	$(".doge.dead").remove();
 }
 
 
 $("body").on("mousemove", function(e) {
+	if(!open) return;
 	try {
 		ws.send(JSON.stringify({
 			name: name,
@@ -72,7 +108,7 @@ $("body").on("mousemove", function(e) {
 			y: e.pageY,
 			wow: false
 		}));
-		$(".doge-me").css({
+		$("#me").css({
 			left: e.pageX,
 			top: e.pageY
 		})
@@ -81,6 +117,7 @@ $("body").on("mousemove", function(e) {
 	}
 });
 $("body").on("click", function(e) {
+	if(!open) return;
 	try {
 		ws.send(JSON.stringify({
 			name: name,
@@ -88,9 +125,9 @@ $("body").on("click", function(e) {
 			y: e.pageY,
 			wow: true
 		}));
-		$(".doge-me").addClass("wow");
+		$("#me").addClass("wow");
 		setTimeout(function(){
-			$(".doge-me").removeClass("wow");
+			$("#me").removeClass("wow");
 		}, 600);
 	} catch (err) {
 		console.warn(err);

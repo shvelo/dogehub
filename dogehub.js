@@ -26,39 +26,54 @@ wss.on('connection', function (socket) {
 		y: 0,
 		name: "",
 		wow: false,
-		dead: false
+		dead: false,
+		lvl: 0
 	};
 	doges.push(doge);
 	console.log(doge);
 
+	socket.on('close', function() {
+		clearInterval(emitter);
+		console.log('wow doge is disconnect');
+		doge.dead = true;
+	});
+
 	socket.on('message', function (data) {
 		var data = JSON.parse(data);
+
+		if("id" in data) {
+			doges.forEach(function(dawg) {
+				if(dawg.dead && dawg.id == data.id) {
+					doge.lvl = dawg.lvl;
+					dawg.remove = true;
+				}
+			});
+		}
 
 		var date = new Date();
 		doge.x = data.x;
 		doge.y = data.y;
 		doge.name = escapeHtml(data.name);
 		doge.wow = data.wow;
+
+		if(doge.wow && doge.lvl < 100) {
+			doge.lvl++;
+		}
 	});
 
 	var emitter = setInterval(function(){
+		if(socket.readyState != 1) return;
 		socket.send(JSON.stringify({
 			you: doge,
 			doges: doges
 		}));
 	}, 50);
-
-	socket.on('close', function() {
-		console.log('wow doge is disconnect');
-		doge.dead = true;
-		clearInterval(emitter);
-	});
 });
 
 setInterval(cleanupDoges, 50);
 function cleanupDoges() {
 	doges.forEach(function(doge, index) {
-		if(doge.dead) doges.splice(index, 1);
+		if(doge.remove) doges.splice(index, 1);
 	});
 }
 
