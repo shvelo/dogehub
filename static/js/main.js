@@ -51,7 +51,6 @@ ws.onmessage = function (raw_data) {
 
 	lvl = data.you.lvl;
 	$("#char .lvl").val(lvl / 100);
-	$("#me .lvl").val(lvl / 100);
 	if(lvl == 100) $("#me").addClass("super");
 
 	doges = data.doges;
