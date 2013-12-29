@@ -79,12 +79,16 @@ ws.onmessage = function (raw_data) {
 					doge_el.removeClass("wow");
 				}, 600);
 			}
+			if(doge.newMsg) {
+				doge_el.find(".message").text(doge.msg).show();
+				setTimeout(function(){
+					doge_el.find(".message").hide();
+				}, 1000);
+			}
 		} else {
 			$("#pointer-area").append("<div class='doge' id='" +
-				doge.id +
-				"'><span class=name>" +
-				doge.name +
-				"</span><span class=wow>WOW</span></div>");
+			doge.id + "'><span class=name>" + doge.name +
+			"</span><span class=wow>WOW</span><span class=message></span></div>");
 		}
 	});
 
@@ -141,6 +145,10 @@ $(window).on("keyup", function(e) {
 		input.focus();
 
 		if(message.length > 0 && open) {
+			$("#me .message").text(message).show();
+			setTimeout(function(){
+				$("#me .message").hide();
+			}, 1000);
 			ws.send(JSON.stringify({
 				msg: message
 			}));

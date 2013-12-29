@@ -78,6 +78,20 @@ progress::-moz-progress-bar {
 	color: #FF3DB2;
 }
 
+.doge span.message {
+	display: none;
+	width: 300px;
+	text-align: left;
+	text-overflow: ellipsis;
+	top: 15px;
+	left: 70px;
+	font-size: 1.2em;
+	background: none;
+	font-weight: bold;
+	color: #FF3DB2;
+}
+
+
 .doge progress {
 	position: absolute;
 	top: 94px;

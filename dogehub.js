@@ -57,10 +57,15 @@ wss.on('connection', function (socket) {
 		if("name" in data) doge.name = escapeHtml(data.name);
 		doge.wow = data.wow || false;
 
-		if("msg" in data) doge.msg = data.msg;
+		if("msg" in data) {
+			doge.msg = data.msg;
+			doge.newMsg = true;
+		} else {
+			doge.newMsg = false;
+		}
 
 		if(doge.wow && doge.lvl < 100) {
-			doge.lvl += 20;
+			doge.lvl += 5;
 		}
 	});
 
