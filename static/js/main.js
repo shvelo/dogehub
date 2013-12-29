@@ -41,6 +41,7 @@ ws.onopen = function() {
 
 ws.onclose = function() {
 	open = false;
+	location.reload();
 }
 
 ws.onmessage = function (raw_data) {
