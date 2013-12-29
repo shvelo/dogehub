@@ -99,6 +99,10 @@ progress::-moz-progress-bar {
 	opacity: .8;
 }
 
+doge.super progress {
+	display: none;
+}
+
 .doge-me {
 	z-index: 800;
 }
