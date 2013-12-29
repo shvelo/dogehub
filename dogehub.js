@@ -60,7 +60,7 @@ wss.on('connection', function (socket) {
 		if("msg" in data) doge.msg = data.msg;
 
 		if(doge.wow && doge.lvl < 100) {
-			doge.lvl++;
+			doge.lvl += 20;
 		}
 	});
 
