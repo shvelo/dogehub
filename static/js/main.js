@@ -14,7 +14,8 @@ if("localStorage" in window && "name" in localStorage) {
 $("#me .name").text(name);
 $("#char .name").text(name);
 
-$("#char .name").click(function() {
+$("#char .name").click(function(e) {
+	e.preventDefault();
 	name = prompt("wow enter new name") || name;
 	$("#me .name").text(name);
 	$("#char .name").text(name);
@@ -52,6 +53,7 @@ ws.onmessage = function (raw_data) {
 
 	lvl = data.you.lvl;
 	$("#char .lvl").val(lvl / 100);
+	$("#me .lvl").val(lvl / 100);
 	if(lvl == 100) $("#me").addClass("super");
 
 	doges = data.doges;

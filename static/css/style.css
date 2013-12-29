@@ -11,6 +11,23 @@ body {
 	background: url(../assets/space.jpg);
 }
 
+progress {
+	background: #2d2d2d;
+	border: 1px solid #2d2d2d;
+	color: white;
+	height: 1.2em;
+}
+
+progress::-webkit-progress-bar {  
+	background: #2d2d2d;
+}
+progress::-webkit-progress-value {  
+	background: white;
+}
+progress::-moz-progress-bar {  
+	background: white;
+}
+
 .doge {
 	position: fixed;
 	width: 60px;
@@ -59,6 +76,14 @@ body {
 	background: none;
 	font-weight: bold;
 	color: #FF3DB2;
+}
+
+.doge progress {
+	position: absolute;
+	top: 94px;
+	left: -40px;
+	width: 140px;
+	opacity: .8;
 }
 
 .doge-me {
