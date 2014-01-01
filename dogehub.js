@@ -30,7 +30,6 @@ wss.on('connection', function (socket) {
 		lvl: 0
 	};
 	doges.push(doge);
-	console.log(doge);
 
 	socket.on('close', function() {
 		clearInterval(emitter);
@@ -80,6 +79,13 @@ setInterval(cleanupDoges, 50);
 function cleanupDoges() {
 	doges.forEach(function(doge, index) {
 		if(doge.remove) doges.splice(index, 1);
+	});
+}
+
+setInterval(cleanupDeadDoges, 5000);
+function cleanupDeadDoges() {
+	doges.forEach(function(doge, index) {
+		if(doge.dead) doges.splice(index, 1);
 	});
 }
 
