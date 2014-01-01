@@ -23,7 +23,7 @@ $("#char .name").click(function(e) {
 	}
 })
 
-var host = location.origin.replace(/^http/, 'ws'),
+var host = "ws://doge.pirrate.me:8000",
 	ws = new WebSocket(host),
 	doges = [],
 	online_text = "wow loading";

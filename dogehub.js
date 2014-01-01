@@ -4,7 +4,7 @@ var WebSocketServer = require('ws').Server
   , http = require('http')
   , express = require('express')
   , app = express()
-  , port = process.env.PORT || 5000
+  , port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 80
   , doges = [];
 
 try {
