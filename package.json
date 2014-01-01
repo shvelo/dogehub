@@ -1,9 +1,10 @@
 {
   "name": "dogehub",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "wow much doges",
   "main": "node dogehub.js",
   "scripts": {
+    "start": "node_modules/forever/bin/forever dogehub.js",
     "test": "node dogegub.js"
   },
   "repository": {
@@ -31,5 +32,5 @@
   "bugs": {
     "url": "https://github.com/shvelo/dogehub"
   },
-  "homepage": "http://dogehub.herokuapp.com"
+  "homepage": "http://doge.pirrate.me"
 }
