@@ -2,7 +2,6 @@ var pid, name, lvl, message, open = false;
 
 if("localStorage" in window && "name" in localStorage) {
 	var name = localStorage.name;
-	if("pid" in localStorage) pid = localStorage.pid;
 } else {
 	name = window.prompt("wow enter your name") || "RandomDoge";
 
@@ -32,8 +31,7 @@ var host = location.origin.replace(/^http/, 'ws'),
 ws.onopen = function() {
 	ws.send(JSON.stringify({
 		name: name,
-		wow: false,
-		id: pid
+		wow: false
 	}));
 
 	open = true;

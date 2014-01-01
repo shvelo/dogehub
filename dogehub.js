@@ -39,15 +39,6 @@ wss.on('connection', function (socket) {
 	socket.on('message', function (data) {
 		var data = JSON.parse(data);
 
-		if("id" in data) {
-			doges.forEach(function(dawg) {
-				if(dawg.dead && dawg.id == data.id) {
-					doge.lvl = dawg.lvl;
-					dawg.remove = true;
-				}
-			});
-		}
-
 		if("x" in data) {
 			doge.x = data.x;
 			doge.y = data.y;
