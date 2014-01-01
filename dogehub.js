@@ -13,9 +13,9 @@ try {
 app.use(express.static(__dirname + '/static/'));
 
 var server = http.createServer(app);
-server.listen(port);
+server.listen(port, ip);
 
-console.log('wow http on %d', port);
+console.log('wow http on %d:%d', ip,port);
 
 var wss = new WebSocketServer({server: server});
 
