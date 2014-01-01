@@ -48,7 +48,6 @@ ws.onmessage = function (raw_data) {
 	pid = data.you.id;
 	message = data.you.msg;
 	$("#me .message").text(message);
-	if("localStorage" in window) localStorage.pid = pid;
 
 	lvl = data.you.lvl;
 	$("#char .lvl").val(lvl / 100);
