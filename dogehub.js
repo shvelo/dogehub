@@ -26,7 +26,6 @@ wss.on('connection', function (socket) {
 		y: 0,
 		name: "",
 		wow: false,
-		dead: false,
 		lvl: 0
 	};
 	doges.push(doge);
@@ -77,13 +76,6 @@ wss.on('connection', function (socket) {
 
 setInterval(cleanupDoges, 50);
 function cleanupDoges() {
-	doges.forEach(function(doge, index) {
-		if(doge.remove) doges.splice(index, 1);
-	});
-}
-
-setInterval(cleanupDeadDoges, 5000);
-function cleanupDeadDoges() {
 	doges.forEach(function(doge, index) {
 		if(doge.dead) doges.splice(index, 1);
 	});
