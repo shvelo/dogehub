@@ -1,4 +1,4 @@
-var pid, name, lvl, message, open = false;
+var pid, name, message, open = false;
 
 if("localStorage" in window && "name" in localStorage) {
 	var name = localStorage.name;
@@ -49,10 +49,6 @@ ws.onmessage = function (raw_data) {
 	message = data.you.msg;
 	$("#me .message").text(message);
 
-	lvl = data.you.lvl;
-	$("#char .lvl").val(lvl / 100);
-	if(lvl == 100) $("#me").addClass("super");
-
 	doges = data.doges;
 	var online_doges = 1;
 
@@ -81,14 +77,10 @@ ws.onmessage = function (raw_data) {
 			}
 			
 			doge_el.find(".message").text(doge.msg);
-			
-			doge_el.find("progress").val(doge.lvl / 100);
-			if(doge.lvl == 100) doge_el.addClass("super");
 		} else {
 			$("#pointer-area").append("<div style='top:"+doge.y+"px;left:"+doge.x+"px' class='doge' id='" +
 			doge.id + "'><span class=name>" + doge.name +
-			"</span><span class=wow>WOW</span><span class=message></span>"+
-			"<progress/></div>");
+			"</span><span class=wow>WOW</span><span class=message></span></div>");
 		}
 	});
 
