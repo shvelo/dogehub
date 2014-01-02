@@ -85,7 +85,7 @@ ws.onmessage = function (raw_data) {
 			doge_el.find("progress").val(doge.lvl / 100);
 			if(doge.lvl == 100) doge_el.addClass("super");
 		} else {
-			$("#pointer-area").append("<div style='top:"doge.y"px;left:"+doge.x+"px' class='doge' id='" +
+			$("#pointer-area").append("<div style='top:"+doge.y+"px;left:"+doge.x+"px' class='doge' id='" +
 			doge.id + "'><span class=name>" + doge.name +
 			"</span><span class=wow>WOW</span><span class=message></span>"+
 			"<progress/></div>");
