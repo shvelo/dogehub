@@ -26,8 +26,7 @@ wss.on('connection', function (socket) {
 		x: 0,
 		y: 0,
 		name: "",
-		wow: false,
-		lvl: 0
+		wow: false
 	};
 	doges.push(doge);
 
@@ -50,10 +49,6 @@ wss.on('connection', function (socket) {
 		if("msg" in data) {
 			doge.msg = data.msg;
 			doge.msgDate = new Date();
-		}
-
-		if(doge.wow && doge.lvl < 100) {
-			doge.lvl += 5;
 		}
 	});
 
