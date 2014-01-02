@@ -171,12 +171,15 @@ progress::-moz-progress-bar {
 	position: fixed;
 	bottom: 0;
 	left: 0;
-	background: #2d2d2d;
-	opacity: .5;
+	background: rgba(45, 45, 45, 0.5);
 	padding: 5px;
 }
 
 #message input {
 	font-size: 1.5em;
 	padding: 5px;
+	outline: none;
+	border: none;
+	background: transparent;
+	color: #FFF;
 }

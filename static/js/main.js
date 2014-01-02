@@ -131,6 +131,7 @@ $("body").on("click", function(e) {
 		}));
 		$("#me").addClass("wow");
 		$("#me").toggleClass("flip");
+		$("#message input").focus();
 		setTimeout(function(){
 			$("#me").removeClass("wow");
 		}, 600);
