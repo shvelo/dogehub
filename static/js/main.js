@@ -31,8 +31,8 @@ function connect() {
 
 	var host = "ws://doge.pirrate.me:8000",
 		ws = new WebSocket(host),
-		doges = [],
-		online_text = "wow loading";
+		doges = [];
+		
 
 	ws.onopen = function() {
 		ws.send(JSON.stringify({
@@ -99,6 +99,8 @@ function connect() {
 		$(".doge.dead").remove();
 	}
 }
+
+var online_text = "wow loading";
 
 connect();
 
