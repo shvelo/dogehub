@@ -1,6 +1,6 @@
 var pid, name, message,open = false;
 var connecting = false;
-var host = ;
+var host = "ws://doge.pirrate.me:8000";
 var doges = [];
 
 if("localStorage" in window && "name" in localStorage) {
