@@ -33,7 +33,11 @@ $("#donate-link").click(function() {
 var connect = function() {
 	window.connecting = true;
 	
-	window.ws = new WebSocket("ws://doge.pirrate.me:8000");
+	window.ws = new WebSocket(host);
+
+	ws.onerror = function(data){
+		console.log(data);
+	};
 
 	ws.onopen = function() {
 		ws.send(JSON.stringify({
@@ -47,7 +51,7 @@ var connect = function() {
 
 	ws.onclose = function() {
 		open = false;
-	}
+	};
 
 	ws.onmessage = function (raw_data) {
 		var data = JSON.parse(raw_data.data);
@@ -99,8 +103,8 @@ var connect = function() {
 
 		$("#me").removeClass("dead");
 		$(".doge.dead").remove();
-	}
-}
+	};
+};
 
 var online_text = "wow loading";
 
