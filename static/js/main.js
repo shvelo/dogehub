@@ -27,77 +27,84 @@ $("#donate-link").click(function() {
 	window.prompt("WOW send much dogecoin to", "DFp8fccvdofyktQdSgXwF3guxnYJWdvmHN");
 });
 
-var host = "ws://doge.pirrate.me:8000",
-	ws = new WebSocket(host),
-	doges = [],
-	online_text = "wow loading";
+function connect() {
 
-ws.onopen = function() {
-	ws.send(JSON.stringify({
-		name: name,
-		wow: false
-	}));
+	var host = "ws://doge.pirrate.me:8000",
+		ws = new WebSocket(host),
+		doges = [],
+		online_text = "wow loading";
 
-	open = true;
-};
+	ws.onopen = function() {
+		ws.send(JSON.stringify({
+			name: name,
+			wow: false
+		}));
 
-ws.onclose = function() {
-	open = false;
-	location.reload();
-}
+		open = true;
+	};
 
-ws.onmessage = function (raw_data) {
-	var data = JSON.parse(raw_data.data);
-
-	pid = data.you.id;
-	message = data.you.msg;
-	$("#me .message").text(message);
-
-	doges = data.doges;
-	var online_doges = 1;
-
-	$(".doge").addClass("dead");
-
-	doges.forEach(function(doge) {
-		if(doge.id == pid || doge.dead) return;
-		var doge_el = $("#"+doge.id);
-
-		online_doges++;
-
-		if (!!doge_el.length) {
-			doge_el.removeClass("dead");
-			doge_el.css({
-				top: doge.y,
-				left: doge.x
-			});
-			doge_el.find(".name").text(doge.name);
-
-			if(doge.wow) {
-				doge_el.addClass("wow");
-				doge_el.toggleClass("flip");
-				setTimeout(function(){
-					doge_el.removeClass("wow");
-				}, 600);
-			}
-			
-			doge_el.find(".message").text(doge.msg);
-		} else {
-			$("#pointer-area").append("<div style='top:"+doge.y+"px;left:"+doge.x+"px' class='doge' id='" +
-			doge.id + "'><span class=name>" + doge.name +
-			"</span><span class=wow>WOW</span><span class=message></span></div>");
-		}
-	});
-
-	if (online_doges < 2) {
-		online_text = "wow such alone.<br>much sad :(";
-	} else {
-		online_text = "wow <b>" + online_doges + "</b> doges online";
+	ws.onclose = function() {
+		open = false;
 	}
 
-	$("#me").removeClass("dead");
-	$(".doge.dead").remove();
+	ws.onmessage = function (raw_data) {
+		var data = JSON.parse(raw_data.data);
+
+		pid = data.you.id;
+		message = data.you.msg;
+		$("#me .message").text(message);
+
+		doges = data.doges;
+		var online_doges = 1;
+
+		$(".doge").addClass("dead");
+
+		doges.forEach(function(doge) {
+			if(doge.id == pid || doge.dead) return;
+			var doge_el = $("#"+doge.id);
+
+			online_doges++;
+
+			if (!!doge_el.length) {
+				doge_el.removeClass("dead");
+				doge_el.css({
+					top: doge.y,
+					left: doge.x
+				});
+				doge_el.find(".name").text(doge.name);
+
+				if(doge.wow) {
+					doge_el.addClass("wow");
+					doge_el.toggleClass("flip");
+					setTimeout(function(){
+						doge_el.removeClass("wow");
+					}, 600);
+				}
+				
+				doge_el.find(".message").text(doge.msg);
+			} else {
+				$("#pointer-area").append("<div style='top:"+doge.y+"px;left:"+doge.x+"px' class='doge' id='" +
+				doge.id + "'><span class=name>" + doge.name +
+				"</span><span class=wow>WOW</span><span class=message></span></div>");
+			}
+		});
+
+		if (online_doges < 2) {
+			online_text = "wow such alone.<br>much sad :(";
+		} else {
+			online_text = "wow <b>" + online_doges + "</b> doges online";
+		}
+
+		$("#me").removeClass("dead");
+		$(".doge.dead").remove();
+	}
 }
 
+connect();
+
+setInterval(function() {
+	if(!open) connect();
+}, 100);
 
 $("body").on("mousemove", function(e) {
 	if(!open) return;
