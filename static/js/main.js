@@ -1,6 +1,6 @@
 var pid, name, message,open = false;
 var connecting = false;
-var host = "ws://doge.pirrate.me:8000";
+var host = ;
 var doges = [];
 
 if("localStorage" in window && "name" in localStorage) {
@@ -33,7 +33,7 @@ $("#donate-link").click(function() {
 var connect = function() {
 	window.connecting = true;
 	
-	window.ws = new WebSocket(host);
+	window.ws = new WebSocket("ws://doge.pirrate.me:8000");
 
 	ws.onopen = function() {
 		ws.send(JSON.stringify({
@@ -106,9 +106,9 @@ var online_text = "wow loading";
 
 connect();
 
-setInterval(function() {
-	if(!open && !connecting) connect();
-}, 100);
+//setInterval(function() {
+//	if(!open && !connecting) connect();
+//}, 100);
 
 $("body").on("mousemove", function(e) {
 	$("#me").css({
