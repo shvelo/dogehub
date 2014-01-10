@@ -21,7 +21,11 @@ $("#char .name").click(function(e) {
 	if("localStorage" in window) {
 		localStorage.name = name;
 	}
-})
+});
+
+$("#donate-link").click(function() {
+	window.prompt("WOW send much dogecoin to", "DFp8fccvdofyktQdSgXwF3guxnYJWdvmHN");
+});
 
 var host = "ws://doge.pirrate.me:8000",
 	ws = new WebSocket(host),
