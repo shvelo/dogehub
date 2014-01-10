@@ -29,9 +29,9 @@ $("#donate-link").click(function() {
 
 function connect() {
 
-	var host = "ws://doge.pirrate.me:8000",
-		ws = new WebSocket(host),
-		doges = [];
+	var host = "ws://doge.pirrate.me:8000";
+	window.ws = new WebSocket(host);
+	window.doges = [];
 		
 
 	ws.onopen = function() {
