@@ -1,4 +1,7 @@
-var pid, name, message, open = false;
+var pid, name, message,open = false;
+var connecting = false;
+var host = "ws://localhost:8080";
+var doges = [];
 
 if("localStorage" in window && "name" in localStorage) {
 	var name = localStorage.name;
@@ -27,12 +30,10 @@ $("#donate-link").click(function() {
 	window.prompt("WOW send much dogecoin to", "DFp8fccvdofyktQdSgXwF3guxnYJWdvmHN");
 });
 
-function connect() {
-
-	var host = "ws://doge.pirrate.me:8000";
+var connect = function() {
+	window.connecting = true;
+	
 	window.ws = new WebSocket(host);
-	window.doges = [];
-		
 
 	ws.onopen = function() {
 		ws.send(JSON.stringify({
@@ -40,6 +41,7 @@ function connect() {
 			wow: false
 		}));
 
+		window.connecting = false;
 		open = true;
 	};
 
@@ -105,10 +107,15 @@ var online_text = "wow loading";
 connect();
 
 setInterval(function() {
-	if(!open) connect();
+	if(!open && !connecting) connect();
 }, 100);
 
 $("body").on("mousemove", function(e) {
+	$("#me").css({
+		left: e.pageX,
+		top: e.pageY
+	});
+
 	if(!open) return;
 	try {
 		ws.send(JSON.stringify({
@@ -117,15 +124,17 @@ $("body").on("mousemove", function(e) {
 			y: e.pageY,
 			wow: false
 		}));
-		$("#me").css({
-			left: e.pageX,
-			top: e.pageY
-		})
 	} catch (err) {
 		console.warn(err);
 	}
 });
 $("body").on("click", function(e) {
+	$("#me").addClass("wow");
+	$("#me").toggleClass("flip");
+	$("#message input").focus();
+	setTimeout(function(){
+		$("#me").removeClass("wow");
+	}, 600);
 	if(!open) return;
 	try {
 		ws.send(JSON.stringify({
@@ -134,12 +143,6 @@ $("body").on("click", function(e) {
 			y: e.pageY,
 			wow: true
 		}));
-		$("#me").addClass("wow");
-		$("#me").toggleClass("flip");
-		$("#message input").focus();
-		setTimeout(function(){
-			$("#me").removeClass("wow");
-		}, 600);
 	} catch (err) {
 		console.warn(err);
 	}

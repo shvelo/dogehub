@@ -39,6 +39,8 @@ wss.on('connection', function (socket) {
 	socket.on('message', function (data) {
 		var data = JSON.parse(data);
 
+		if(typeof data != "object") return;
+
 		if("x" in data) {
 			doge.x = data.x;
 			doge.y = data.y;
