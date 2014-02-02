@@ -182,3 +182,12 @@ progress::-moz-progress-bar {
 	background: transparent;
 	color: #FFF;
 }
+
+#moon {
+	width: 295px;
+	height: 291px;
+	background: url(../assets/moon.png) no-repeat;
+	position: absolute;
+	top: 100px;
+	left: 300px;
+}
