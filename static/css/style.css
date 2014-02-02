@@ -190,4 +190,5 @@ progress::-moz-progress-bar {
 	position: absolute;
 	top: 100px;
 	left: 300px;
+	z-index: -1;
 }
