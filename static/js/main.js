@@ -1,6 +1,6 @@
 var pid, name, message,open = false;
 var connecting = false;
-var host = location.replace(/http:/, "ws:");
+var host = location.href;
 var doges = [];
 
 if("localStorage" in window && "name" in localStorage) {
@@ -33,7 +33,7 @@ $("#donate-link").click(function() {
 var connect = function() {
 	window.connecting = true;
 	
-	window.ws = new WebSocket(host);
+	window.ws = new WebSocket(host.replace("http:", "ws:"));
 
 	ws.onerror = function(data){
 		console.log(data);
