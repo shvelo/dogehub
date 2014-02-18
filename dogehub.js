@@ -5,7 +5,6 @@ var WebSocketServer = require('ws').Server
   , express = require('express')
   , app = express()
   , port = process.env.OPENSHIFT_NODEJS_PORT || 8080
-  , ip = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1"
   , doges = [];
 
 try {
@@ -13,9 +12,9 @@ try {
 app.use(express.static(__dirname + '/static/'));
 
 var server = http.createServer(app);
-server.listen(port, ip);
+server.listen(port);
 
-console.log('wow http on %d:%d', ip,port);
+console.log('wow http on %d', port);
 
 var wss = new WebSocketServer({server: server});
 
